@@ -11,7 +11,8 @@ public class HelloController {
 	@GetMapping
 	public String hello()
 	{
-		return "Hello, Generation!";
+		return "Hello, Generation! \nNeste projeto utilizei as habilidades de persistência e"
+				+ " atenção aos detalhes.";
 	}
 
 }
