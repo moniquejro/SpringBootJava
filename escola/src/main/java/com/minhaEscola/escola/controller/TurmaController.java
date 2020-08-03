@@ -40,7 +40,8 @@ public class TurmaController {
 	}
 	@PostMapping
 	public ResponseEntity<Turma> postTurma (@RequestBody Turma turma){
-		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(turma));
+		return ResponseEntity.status(HttpStatus.CREATED)
+				.body(repository.save(turma));
 	}
 	
 	@PutMapping
