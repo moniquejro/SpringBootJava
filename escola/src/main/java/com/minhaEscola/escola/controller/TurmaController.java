@@ -21,35 +21,35 @@ import com.minhaEscola.escola.repository.TurmaRepository;
 
 @RestController
 @RequestMapping("/turma")
-@CrossOrigin("*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class TurmaController {
 	
 	@Autowired
 	private TurmaRepository repository;
 	
 	@GetMapping
-	public ResponseEntity<List<Turma>> GetAll(){
+	public ResponseEntity<List<Turma>> findAllTurma(){
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Turma> GetById(@PathVariable long id){
+	public ResponseEntity<Turma> findByIdTurma(@PathVariable long id){
 		return repository.findById(id)
 				.map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 	}
 	@PostMapping
-	public ResponseEntity<Turma> post (@RequestBody Turma turma){
+	public ResponseEntity<Turma> postTurma (@RequestBody Turma turma){
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(turma));
 	}
 	
 	@PutMapping
-	public ResponseEntity<Turma> put (@RequestBody Turma turma){
+	public ResponseEntity<Turma> putTurma (@RequestBody Turma turma){
 		return ResponseEntity.status(HttpStatus.OK).body(repository.save(turma));
 	}
 	
 	@DeleteMapping ("/{id}") //interpolação
-	public void delete(@PathVariable long id) {
+	public void deleteTurma (@PathVariable long id) {
 		repository.deleteById(id);
 	}
 
